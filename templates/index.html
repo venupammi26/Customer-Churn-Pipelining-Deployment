@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Churn Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body  > 
+ 
+ 
+ <div class="login" >
+	<h1>Venu's Telecome Churn Prediction</h1>
+	
+	<marquee class="marq" bgcolor = "Green" direction = "left" loop="" > 
+                <div class="geek2">Upload Test data file in CSV format for prediction</div> 
+    </marquee> 
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action = "{{ url_for('uploader')}}" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+    </form>
+
+   <br>
+   <br>
+   <div style="overflow:auto; width:100%; height:130%"> 
+                   
+       {% for table in tables %}
+                {{titles[loop.index]}}
+                {{ table|safe }}
+       {% endfor %} 
+
+
+   </div>
+ 
+ </div>
+ 
+   
+
+
+</body>
+</html>
